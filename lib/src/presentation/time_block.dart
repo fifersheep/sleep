@@ -1,25 +1,25 @@
 import 'package:flutter/widgets.dart';
-import 'package:sleep/src/presentation/colors.dart';
 
 class TimeBlock extends StatelessWidget {
-  const TimeBlock(this.text, {super.key});
+  const TimeBlock(this.text, this.color, {super.key});
 
   final String text;
+  final Color color;
 
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: ThemeColors.white50,
+            color: color,
             width: 0.5,
           ),
           borderRadius: const BorderRadius.all(Radius.circular(4)),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
           child: Text(
             text,
-            style: const TextStyle(color: ThemeColors.white50, fontSize: 30),
+            style: TextStyle(color: color, fontSize: 30),
           ),
         ),
       );
