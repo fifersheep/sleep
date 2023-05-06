@@ -29,6 +29,9 @@ class SleepApp extends StatelessWidget {
         Locale('ru'),
       ],
       color: ThemeColors.primary,
+      textStyle: const TextStyle(
+        fontFamily: 'Montserrat',
+      ),
       builder: (context, child) => const Content(),
     );
   }
