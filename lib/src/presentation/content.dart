@@ -57,21 +57,24 @@ class _ContentState extends State<Content> {
               ),
             ),
             const SizedBox(height: 30),
-            Column(
-              children: [
-                Text(
-                  time(0),
-                  style: const TextStyle(color: ThemeColors.white40, fontSize: 50),
-                ),
-                const SizedBox(height: 50),
-                TimeBlock(time(9), ThemeColors.white80),
-                const SizedBox(height: 20),
-                TimeBlock(time(7, 30), ThemeColors.white60),
-                const SizedBox(height: 20),
-                TimeBlock(time(6), ThemeColors.white40),
-                const SizedBox(height: 20),
-                TimeBlock(time(4, 30), ThemeColors.white20),
-              ],
+            IntrinsicWidth(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    time(0),
+                    style: const TextStyle(color: ThemeColors.white40, fontSize: 50),
+                  ),
+                  const SizedBox(height: 50),
+                  TimeBlock("6", time(9, 15), ThemeColors.white80),
+                  const SizedBox(height: 20),
+                  TimeBlock("5", time(7, 45), ThemeColors.white60),
+                  const SizedBox(height: 20),
+                  TimeBlock("4", time(6, 15), ThemeColors.white40),
+                  const SizedBox(height: 20),
+                  TimeBlock("3", time(4, 45), ThemeColors.white20),
+                ],
+              ),
             ),
           ],
         ),

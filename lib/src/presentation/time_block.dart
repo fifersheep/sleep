@@ -1,9 +1,11 @@
 import 'package:flutter/widgets.dart';
+import 'package:sleep/src/presentation/colors.dart';
 
 class TimeBlock extends StatelessWidget {
-  const TimeBlock(this.text, this.color, {super.key});
+  const TimeBlock(this.cycles, this.time, this.color, {super.key});
 
-  final String text;
+  final String cycles;
+  final String time;
   final Color color;
 
   @override
@@ -15,12 +17,28 @@ class TimeBlock extends StatelessWidget {
           ),
           borderRadius: const BorderRadius.all(Radius.circular(4)),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-          child: Text(
-            text,
-            style: TextStyle(color: color, fontSize: 30),
-          ),
+        child: Stack(
+          alignment: Alignment.center,
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              left: -55,
+              child: Text(
+                cycles,
+                style: const TextStyle(
+                  fontSize: 80,
+                  color: ThemeColors.white5,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 32),
+              child: Text(
+                time,
+                style: TextStyle(color: color, fontSize: 30),
+              ),
+            )
+          ],
         ),
       );
 }

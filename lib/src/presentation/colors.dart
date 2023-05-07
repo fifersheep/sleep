@@ -12,6 +12,7 @@ class ThemeColors {
   static const Color white60 = Color.fromARGB(153, 255, 255, 255);
   static const Color white40 = Color.fromARGB(102, 255, 255, 255);
   static const Color white20 = Color.fromARGB(51, 255, 255, 255);
+  static const Color white5 = Color.fromARGB(13, 255, 255, 255);
 
   static const Color black25 = Color(0x40000000);
 
