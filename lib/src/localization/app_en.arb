@@ -2,5 +2,21 @@
   "appTitle": "Sleep",
   "@appTitle": {
     "description": "The title of the application"
+  },
+  "now": "Now",
+  "@now": {
+    "description": "Now"
+  },
+  "nowMessage": "Go to bed now and set an alarm for...",
+  "@nowMessage": {
+    "description": "The message displayed on the Now segment"
+  },
+  "alarm": "Alarm",
+  "@alarm": {
+    "description": "Alarm"
+  },
+  "alarmMessage": "Set an alarm for this time and go to bed at...",
+  "@alarmMessage": {
+    "description": "The message displayed on the Alarm segment"
   }
 }

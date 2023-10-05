@@ -6,6 +6,8 @@ class ThemeColors {
   ThemeColors._();
 
   static const Color primary = Color(0xFF8A79BA);
+  static const Color primaryLight = Color(0xFF9C8DC4);
+  static const Color primaryDark = Color(0xFF7766AB);
 
   static const Color white = Color.fromARGB(255, 255, 255, 255);
   static const Color white80 = Color.fromARGB(204, 255, 255, 255);

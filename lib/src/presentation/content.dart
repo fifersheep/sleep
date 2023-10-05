@@ -1,9 +1,10 @@
-import 'dart:async';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:intl/intl.dart';
+import 'package:sleep/src/presentation/alarm.dart';
 import 'package:sleep/src/presentation/colors.dart';
-import 'package:sleep/src/presentation/time_block.dart';
+import 'package:sleep/src/presentation/now.dart';
+
+enum Mode { now, hours }
 
 /// Displays a list of SampleItems.
 class Content extends StatefulWidget {
@@ -14,28 +15,7 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> {
-  late Timer _timer;
-  late DateTime _dateTime;
-
-  @override
-  void initState() {
-    _dateTime = DateTime.now();
-    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      setState(() {
-        _dateTime = DateTime.now();
-      });
-    });
-    super.initState();
-  }
-
-  String time(int hours, [int minutes = 0]) =>
-      DateFormat("HH:mm").format(_dateTime.add(Duration(hours: hours, minutes: minutes)));
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
+  Mode _selectedSegment = Mode.now;
 
   @override
   Widget build(BuildContext context) {
@@ -56,26 +36,39 @@ class _ContentState extends State<Content> {
                 style: textStyle.copyWith(fontSize: 50),
               ),
             ),
-            const SizedBox(height: 30),
-            IntrinsicWidth(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    time(0),
-                    style: const TextStyle(color: ThemeColors.white40, fontSize: 50),
-                  ),
-                  const SizedBox(height: 50),
-                  TimeBlock("6", time(9, 15), ThemeColors.white80),
-                  const SizedBox(height: 20),
-                  TimeBlock("5", time(7, 45), ThemeColors.white60),
-                  const SizedBox(height: 20),
-                  TimeBlock("4", time(6, 15), ThemeColors.white40),
-                  const SizedBox(height: 20),
-                  TimeBlock("3", time(4, 45), ThemeColors.white20),
-                ],
-              ),
+            // Integrated the segmented control directly here
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: CupertinoSlidingSegmentedControl<Mode>(
+                  backgroundColor: ThemeColors.primaryDark,
+                  thumbColor: ThemeColors.primaryLight,
+                  groupValue: _selectedSegment,
+                  onValueChanged: (Mode? value) {
+                    if (value != null) {
+                      setState(() {
+                        _selectedSegment = value;
+                      });
+                    }
+                  },
+                  children: {
+                    Mode.now: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        AppLocalizations.of(context)!.now,
+                        style: const TextStyle(color: CupertinoColors.white),
+                      ),
+                    ),
+                    Mode.hours: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        AppLocalizations.of(context)!.alarm,
+                        style: const TextStyle(color: CupertinoColors.white),
+                      ),
+                    ),
+                  }),
             ),
+            const SizedBox(height: 16.0),
+            _selectedSegment == Mode.now ? const Now() : const Alarm(),
           ],
         ),
       ),
