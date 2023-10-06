@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,7 +16,7 @@ class SleepApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: ThemeColors.primary),
     );
-    return WidgetsApp(
+    return MaterialApp(
       restorationScopeId: 'app',
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -28,11 +28,11 @@ class SleepApp extends StatelessWidget {
         Locale('en', ''),
         Locale('ru'),
       ],
-      color: ThemeColors.primary,
-      textStyle: const TextStyle(
+      theme: ThemeData(
+        primarySwatch: ThemeColors.purple,
         fontFamily: 'Montserrat',
       ),
-      builder: (context, child) => const Content(),
+      home: const Scaffold(body: Content()),
     );
   }
 }
