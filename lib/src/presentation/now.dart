@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:sleep/src/presentation/colors.dart';
 import 'package:sleep/src/presentation/time_block.dart';
 
-/// Displays a list of SampleItems.
 class Now extends StatefulWidget {
   const Now({super.key});
 
@@ -53,13 +52,13 @@ class _NowState extends State<Now> {
               style: const TextStyle(color: ThemeColors.white60, fontSize: 16),
             ),
             const SizedBox(height: 30),
-            TimeBlock("Six", time(9, 15), ThemeColors.white80),
+            TimeBlock(AppLocalizations.of(context)!.six, time(9, 15), ThemeColors.white80),
             const SizedBox(height: 20),
-            TimeBlock("Five", time(7, 45), ThemeColors.white60),
+            TimeBlock(AppLocalizations.of(context)!.five, time(7, 45), ThemeColors.white60),
             const SizedBox(height: 20),
-            TimeBlock("Four", time(6, 15), ThemeColors.white40),
+            TimeBlock(AppLocalizations.of(context)!.four, time(6, 15), ThemeColors.white40),
             const SizedBox(height: 20),
-            TimeBlock("Three", time(4, 45), ThemeColors.white20),
+            TimeBlock(AppLocalizations.of(context)!.three, time(4, 45), ThemeColors.white20),
           ],
         ),
       );

@@ -18,5 +18,21 @@
   "alarmMessage": "Set an alarm for this time and go to bed at...",
   "@alarmMessage": {
     "description": "The message displayed on the Alarm segment"
+  },
+  "three": "Three",
+  "@three": {
+    "description": "The number three"
+  },
+  "four": "Four",
+  "@four": {
+    "description": "The number four"
+  },
+  "five": "Five",
+  "@five": {
+    "description": "The number five"
+  },
+  "six": "Six",
+  "@six": {
+    "description": "The number six"
   }
 }
